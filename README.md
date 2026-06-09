@@ -5,8 +5,8 @@ Desarrollar una página web básica utilizando HTML y CSS para poner en práctic
 
 ## Integrantes y Roles
 * **Líder:** Ángel
+* **BackEnd:** Jesús
 * **Integrador:** Rodrigo
-* **Integrador:** Jesús
 * **Diseñador:** Stephany
 * **Documentador:** Raúl
 
