@@ -1,0 +1,301 @@
+/* ==========================================
+   1. VARIABLES Y RESETEO
+   ========================================== */
+:root {
+    --bg-primary: #fdfaf6;
+    --text-main: #2c1b18;
+    --accent-pink: #ffb4a2;
+    --accent-dark-pink: #e07a5f;
+    --card-bg: #ffffff;
+    --shadow-soft: 0 10px 30px rgba(111, 78, 55, 0.08);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   2. HEADER & NAVEGACIÓN
+   ========================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-dark-pink);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-dark-pink);
+}
+
+/* Línea animada debajo de los enlaces */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-dark-pink);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================
+   3. SECCIÓN HERO
+   ========================================== */
+.hero {
+    height: 90vh;
+    min-height: 500px;
+    background: linear-gradient(rgba(44, 27, 24, 0.4), rgba(44, 27, 24, 0.2)), 
+                url('https://images.unsplash.com/photo-1511018556340-d16986a1c194?q=80&w=1200') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    margin-top: 70px;
+}
+
+.hero-content {
+    max-width: 700px;
+    color: white;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    line-height: 1.6;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.btn-primary {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--accent-dark-pink);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(224, 122, 95, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(224, 122, 95, 0.6);
+    background-color: #c9654b;
+}
+
+/* ==========================================
+   4. SECCIÓN CATÁLOGO (GRID RESPONSIVO)
+   ========================================== */
+.catalog-section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title p {
+    color: #7f6a64;
+    font-size: 1.1rem;
+}
+
+/* Contenedor Grid Inteligente */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Tarjetas de Producto */
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(111, 78, 55, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(111, 78, 55, 0.15);
+}
+
+/* Badges / Etiquetas */
+.badge, .badge-new {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    z-index: 10;
+}
+.badge { background-color: #d4a373; }
+.badge-new { background-color: var(--accent-dark-pink); }
+
+/* Contenedor de Imagen de marcador */
+.product-img {
+    height: 220px;
+    background-color: #fff2ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover .product-img {
+    background-color: #ffe6dc;
+    font-size: 100px;
+}
+
+/* Información del producto */
+.product-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.product-info p {
+    color: #6c5853;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.btn-card {
+    text-decoration: none;
+    color: var(--accent-dark-pink);
+    border: 2px solid var(--accent-dark-pink);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition-smooth);
+}
+
+.btn-card:hover {
+    background-color: var(--accent-dark-pink);
+    color: white;
+}
+
+/* ==========================================
+   5. FOOTER
+   ========================================== */
+.footer {
+    background-color: var(--text-main);
+    color: #f7ede2;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
